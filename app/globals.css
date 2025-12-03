@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #FF6B35;
+  --color-primary-dark: #E5612F;
+  --color-primary-light: #FF8557;
+
+  --color-secondary: #4ECDC4;
+  --color-secondary-dark: #46B9B0;
+  --color-secondary-light: #6FD7CF;
+
+  --color-accent: #FFE66D;
+  --color-accent-dark: #E6CF62;
+  --color-accent-light: #FFED8A;
+
+  --color-light-bg: #F5F5F5;
+  --color-light-card: #FFFFFF;
+  --color-light-card-bg: #F8F9FA;
+  --color-light-text: #1A1A1A;
+  --color-light-text-secondary: #666666;
+  --color-light-border: #E0E0E0;
+
+  --color-dark-bg: #121212;
+  --color-dark-card: #1E1E1E;
+  --color-dark-card-bg: #2A2A2A;
+  --color-dark-text: #FFFFFF;
+  --color-dark-text-secondary: #B0B0B0;
+  --color-dark-border: #333333;
+
+  --color-success: #51CF66;
+  --color-warning: #FFA94D;
+  --color-error: #FF6B6B;
+  --color-info: #74C0FC;
+}
+
+:root {
+  --background: #F5F5F5;
+  --foreground: #1A1A1A;
+}
+
+.dark {
+  --background: #121212;
+  --foreground: #FFFFFF;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
