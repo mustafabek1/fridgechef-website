@@ -5,7 +5,7 @@
 export type Locale = 'tr' | 'en';
 
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://fridgechef-website.vercel.app'
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://fridgechef.site'
 ).replace(/\/$/, '');
 
 export const APP_STORE_ID = '6755315106';
