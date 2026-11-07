@@ -1,125 +1,35 @@
 # FridgeChef Website
 
-Modern, responsive website for FridgeChef - AI-Powered Recipe Generator app.
+Marketing site for the FridgeChef iOS app. Next.js 16 (App Router), React 19, Tailwind CSS v4. All pages are static.
 
-## 🚀 Tech Stack
-
-- **Next.js 16** - React framework with App Router
-- **TypeScript** - Type safety and better DX
-- **Tailwind CSS** - Utility-first CSS framework
-- **Dark Mode** - Automatic dark mode support
-
-## 📦 Installation
+Requires Node 20.9 or later.
 
 ```bash
 npm install
-```
-
-## 🔧 Development
-
-Run the development server:
-
-```bash
 npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## 🏗️ Build
-
-Create an optimized production build:
-
-```bash
-npm run build
-npm start
-```
-
-## 📁 Project Structure
-
-```
-fridgechef-website/
-├── app/                    # Next.js App Router
-│   ├── layout.tsx         # Root layout
-│   ├── page.tsx           # Homepage (Landing)
-│   ├── globals.css        # Global styles
-│   ├── support/           # Support page
-│   │   └── page.tsx
-│   └── privacy/           # Privacy Policy page
-│       └── page.tsx
-├── components/            # Reusable components
-│   ├── Header.tsx
-│   └── Footer.tsx
-├── public/               # Static assets
-├── tailwind.config.ts    # Tailwind configuration
-└── package.json
-```
-
-## 🎨 Design System
-
-### Colors
-
-- **Primary**: `#FF6B35` (Orange) - Main brand color
-- **Secondary**: `#4ECDC4` (Teal) - Accent color
-- **Accent**: `#FFE66D` (Yellow) - Highlights
-- **Success**: `#51CF66` (Green)
-- **Warning**: `#FFA94D` (Orange)
-- **Error**: `#FF6B6B` (Red)
-- **Info**: `#74C0FC` (Blue)
-
-### Theme
-
-The website supports automatic dark mode based on system preferences with manual toggle.
-
-## 📄 Pages
-
-### Landing Page (/)
-- Hero section with app introduction
-- Features showcase
-- How it works section
-- Download buttons (App Store & Google Play)
-
-### Support Page (/support)
-- Contact information
-- Frequently Asked Questions
-- Platform support details
-- Feature requests & Bug reports
-
-### Privacy Policy (/privacy)
-- Complete privacy policy
-- Data collection and usage
-- User rights
-- GDPR compliance information
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-
-1. Push to GitHub
-2. Import project in Vercel
-3. Deploy automatically
-
-### Manual Deployment
-
-```bash
 npm run build
 ```
 
-The `out` directory can be deployed to any static hosting service.
+## Structure
 
-## 📱 Mobile Responsive
+Turkish is the default language and lives at the root. English lives under `/en`. Each language has its own root layout, so `<html lang>` is correct on the server.
 
-The website is fully responsive and optimized for:
-- Mobile devices (320px+)
-- Tablets (768px+)
-- Desktop (1024px+)
-- Large screens (1280px+)
+| Route | Content |
+|---|---|
+| `/`, `/en` | Landing page |
+| `/support`, `/en/support` | Support and FAQ |
+| `/privacy`, `/en/privacy` | Privacy policy |
+| `/terms`, `/en/terms` | Terms of use |
 
-## 🔗 Links
+- `content/tr.ts`, `content/en.ts`: all site copy
+- `content/legal.ts`: privacy policy and terms
+- `lib/site.ts`: App Store id, emails, prices and the site URL (`NEXT_PUBLIC_SITE_URL`)
+- `components/AppUi.tsx`: pieces of the app's interface, in its colours and type weights
 
-- Main App Repository: [SmartFridgeApp](../SmartFridgeApp)
-- Support: support@fridgechef.app
-- Privacy: privacy@fridgechef.app
+## Copy rules
 
-## 📝 License
+The copy must match what the app does. Check the app repo before adding a claim. Do not add weight-loss amounts, spot-reduction promises, invented user counts or reviews, or Android download links.
 
-© 2025 FridgeChef. All rights reserved.
+When prices change in App Store Connect, update `PRICES` in `lib/site.ts`.
+
+Use Apple's unmodified badge artwork in `public/badges`, and do not place it on tilted or animated elements. The interface pieces deliberately have no iPhone frame, because Apple restricts how device images may be used.

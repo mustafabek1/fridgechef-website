@@ -1,72 +1,329 @@
 @import "tailwindcss";
 
-@theme {
-  --color-primary: #FF6B35;
-  --color-primary-dark: #E5612F;
-  --color-primary-light: #FF8557;
+@custom-variant dark (&:where(.dark, .dark *));
 
-  --color-secondary: #4ECDC4;
-  --color-secondary-dark: #46B9B0;
-  --color-secondary-light: #6FD7CF;
+@theme inline {
+  --color-*: initial;
 
-  --color-accent: #FFE66D;
-  --color-accent-dark: #E6CF62;
-  --color-accent-light: #FFED8A;
+  /* Page: follows the light/dark switch. */
+  --color-bg: var(--bg);
+  --color-raised: var(--raised);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-fg-2: var(--fg-2);
+  --color-fg-3: var(--fg-3);
+  --color-accent: var(--accent);
 
-  --color-light-bg: #F5F5F5;
-  --color-light-card: #FFFFFF;
-  --color-light-card-bg: #F8F9FA;
-  --color-light-text: #1A1A1A;
-  --color-light-text-secondary: #666666;
-  --color-light-border: #E0E0E0;
+  /* Brand: same in both themes. White on #ff6b35 fails contrast, so text on it is ink. */
+  --color-brand: #ff6b35;
+  --color-ink: #14100c;
+  --color-white: #ffffff;
 
-  --color-dark-bg: #121212;
-  --color-dark-card: #1E1E1E;
-  --color-dark-card-bg: #2A2A2A;
-  --color-dark-text: #FFFFFF;
-  --color-dark-text-secondary: #B0B0B0;
-  --color-dark-border: #333333;
+  /* App UI crops: always the app's own dark palette (ThemeContext.tsx). */
+  --color-ui-bg: #121212;
+  --color-ui-card: #1e1e1e;
+  --color-ui-muted: #2a2a2a;
+  --color-ui-line: #333333;
+  --color-ui-fg-2: #b0b0b0;
+  --color-ui-fg-3: #808080;
+  --color-fiber: #69db7c;
 
-  --color-success: #51CF66;
-  --color-warning: #FFA94D;
-  --color-error: #FF6B6B;
-  --color-info: #74C0FC;
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-onest);
 }
 
 :root {
-  --background: #F5F5F5;
-  --foreground: #1A1A1A;
+  --bg: #fbf6ee;
+  --raised: #f3ebdf;
+  --line: #e2d7c6;
+  --fg: #1d1712;
+  --fg-2: #5f5549;
+  --fg-3: #6b6053;
+  --accent: #b53a09;
+  color-scheme: light;
 }
 
 .dark {
-  --background: #121212;
-  --foreground: #FFFFFF;
+  --bg: #14100c;
+  --raised: #1f1a14;
+  --line: #352d24;
+  --fg: #f8f1e7;
+  --fg-2: #bdb2a3;
+  --fg-3: #9c9182;
+  --accent: #ff8a5c;
+  color-scheme: dark;
+}
+
+html {
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* "fi" ligatures can swallow the dot on Turkish i. */
+html[lang="tr"] {
+  font-variant-ligatures: no-common-ligatures;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-onest), ui-sans-serif, system-ui, sans-serif;
 }
 
-.text-balance {
-  text-wrap: balance;
+.font-display {
+  font-variation-settings: "SOFT" 100;
+  font-weight: 420;
+  letter-spacing: -0.022em;
 }
 
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
-/* Custom animations */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
+summary::-webkit-details-marker {
+  display: none;
+}
+
+details[open] .faq-mark {
+  rotate: 45deg;
+}
+
+.prose-legal a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Hero: a dark kitchen lit only by the open fridge. Every default below is the
+   finished scene, so no-JS and reduced-motion visitors see it complete. */
+.hero-room {
+  background: radial-gradient(90% 90% at 80% 42%, #2a1d12 0%, #0d0a07 65%);
+}
+
+.hero-glow {
+  background:
+    radial-gradient(44% 64% at 73% 48%, rgba(255, 216, 160, 0.34), transparent 70%),
+    radial-gradient(46% 16% at 72% 95%, rgba(255, 190, 130, 0.34), transparent 72%),
+    radial-gradient(34% 40% at 34% 44%, rgba(255, 140, 80, 0.07), transparent 75%);
+}
+
+@media (max-width: 1279px) {
+  .hero-glow {
+    background:
+      radial-gradient(90% 34% at 62% 72%, rgba(255, 216, 160, 0.3), transparent 72%),
+      radial-gradient(90% 12% at 50% 98%, rgba(255, 190, 130, 0.22), transparent 72%);
   }
-  50% {
-    transform: translateY(-10px);
+  .hero-room {
+    background: radial-gradient(120% 60% at 62% 72%, #2a1d12 0%, #0d0a07 70%);
   }
 }
 
-.animate-float {
-  animation: float 3s ease-in-out infinite;
+.hero-grain {
+  opacity: 0.09;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.hero-lit {
+  color: #ffb489;
+  text-shadow: 0 0 44px rgba(255, 150, 90, 0.5);
+}
+
+/* --hero-fw and --hero-fr are shares of the stage width, so the recipe card can sit
+   exactly over the open door and never reach the shelves. */
+.hero-stage {
+  --hero-fw: 66%;
+  --hero-fr: 0%;
+}
+
+.hero-fridge {
+  width: var(--hero-fw);
+  margin-left: auto;
+  margin-right: var(--hero-fr);
+  filter: drop-shadow(0 40px 60px rgba(0, 0, 0, 0.6));
+}
+
+@media (min-width: 1280px) {
+  .hero-stage {
+    /* Short laptop screens: the fridge is limited by height instead of width. */
+    --hero-fw: min(68%, calc((100svh - 15rem) * 0.684));
+    --hero-fr: 4%;
+  }
+
+  .hero-card.hero-card-a {
+    position: absolute;
+    right: calc(var(--hero-fr) + var(--hero-fw) - 0.5%);
+    bottom: -4%;
+    width: 18.5rem;
+    max-width: none;
+    margin: 0;
+  }
+}
+
+.hero-door-wrap {
+  perspective: 2600px;
+  perspective-origin: 60% 50%;
+}
+
+.hero-door {
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transform: rotateY(-108deg);
+}
+
+.hero-door-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 4.5%;
+  overflow: hidden;
+  backface-visibility: hidden;
+}
+
+.hero-door-front {
+  background: linear-gradient(100deg, #3b352d, #2a2620 45%, #3d372f);
+}
+
+.hero-door-back {
+  transform: rotateY(180deg);
+}
+
+.hero-interior-dim {
+  opacity: 0;
+}
+
+.hero-scan {
+  opacity: 0;
+  box-shadow: 0 0 22px 5px rgba(255, 107, 53, 0.65);
+}
+
+.hero-card-a {
+  transform: translate(calc(var(--mx, 0) * -22px), calc(var(--my, 0) * -14px));
+}
+
+.hero-card-b {
+  transform: translate(calc(var(--mx, 0) * 26px), calc(var(--my, 0) * 18px));
+}
+
+.hero-card {
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-card {
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Content stays fully visible wherever this is unsupported (iOS below 26). */
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 28%;
+    }
+  }
+
+  .hero-door {
+    animation: door-open 1.7s cubic-bezier(0.55, 0, 0.15, 1) 0.35s both;
+  }
+
+  .hero-interior-dim {
+    animation: light-on 0.9s steps(6, jump-end) 0.75s both;
+  }
+
+  .hero-glow {
+    animation: glow-on 1.3s ease-out 0.85s both;
+  }
+
+  .hero-scan {
+    animation: scan 1.5s cubic-bezier(0.45, 0, 0.55, 1) 1.9s both;
+  }
+
+  .hero-boxes {
+    animation: rise-in 0.6s ease-out 3s both;
+  }
+
+  .hero-card-a {
+    animation: rise-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 3.3s both;
+  }
+
+  .hero-card-b {
+    animation: rise-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 3.65s both;
+  }
+
+  .hero-wait .hero-door,
+  .hero-wait .hero-interior-dim,
+  .hero-wait .hero-scan,
+  .hero-wait .hero-boxes,
+  .hero-wait .hero-card-a,
+  .hero-wait .hero-card-b,
+  .hero-wait .hero-glow {
+    animation-play-state: paused;
+  }
+
+  .hero-swap {
+    animation: swap-in 0.45s ease-out both;
+  }
+}
+
+@keyframes door-open {
+  from {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes light-on {
+  0% { opacity: 1; }
+  30% { opacity: 0.35; }
+  45% { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+
+@keyframes glow-on {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    translate: 0 22px;
+  }
+}
+
+@keyframes swap-in {
+  from {
+    opacity: 0;
+    translate: 0 8px;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    translate: 0 28px;
+  }
+}
+
+@keyframes scan {
+  0% {
+    top: 4%;
+    opacity: 0;
+  }
+  12%,
+  88% {
+    opacity: 1;
+  }
+  100% {
+    top: 95%;
+    opacity: 0;
+  }
 }
