@@ -33,6 +33,7 @@ export default function Footer({ locale, t }: { locale: Locale; t: Dict['chrome'
             <li><Link className={linkClass} href={`${p}/support`}>{t.navSupport}</Link></li>
             <li><Link className={linkClass} href={`${p}/privacy`}>{t.navPrivacy}</Link></li>
             <li><Link className={linkClass} href={`${p}/terms`}>{t.navTerms}</Link></li>
+            <li><Link className={linkClass} href={`${p}/delete-account`}>{t.navDeleteAccount}</Link></li>
             <li><a className={linkClass} href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a></li>
           </ul>
         </div>

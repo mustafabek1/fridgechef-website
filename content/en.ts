@@ -15,6 +15,8 @@ export const en: Dict = {
     termsDescription: 'Terms of use and subscription terms for the FridgeChef app.',
     getTitle: 'Download FridgeChef | iPhone and iPad',
     getDescription: 'FridgeChef is on the App Store. Recipes from your fridge, calorie tracking and diet plans.',
+    deleteTitle: 'Delete your account | FridgeChef',
+    deleteDescription: 'How to have your FridgeChef account and its data deleted, what is deleted and how long it takes.',
   },
   chrome: {
     skip: 'Skip to content',
@@ -26,6 +28,7 @@ export const en: Dict = {
     navSupport: 'Support',
     navPrivacy: 'Privacy',
     navTerms: 'Terms of use',
+    navDeleteAccount: 'Delete your account',
     download: 'Download',
     switchLanguage: 'TR',
     switchLanguageLabel: 'Türkçeye geç',

@@ -18,6 +18,8 @@ export const tr = {
     termsDescription: 'FridgeChef uygulamasının kullanım koşulları ve abonelik şartları.',
     getTitle: "FridgeChef'i indir | iPhone ve iPad",
     getDescription: 'FridgeChef App Store’da. Buzdolabındakilerle tarif, kalori takibi ve diyet planı.',
+    deleteTitle: 'Hesabını sil | FridgeChef',
+    deleteDescription: 'FridgeChef hesabını ve hesabına bağlı verileri nasıl sildireceğin, nelerin silindiği ve ne kadar sürdüğü.',
   },
   chrome: {
     skip: 'İçeriğe geç',
@@ -29,6 +31,7 @@ export const tr = {
     navSupport: 'Destek',
     navPrivacy: 'Gizlilik',
     navTerms: 'Kullanım koşulları',
+    navDeleteAccount: 'Hesabını sil',
     download: 'İndir',
     switchLanguage: 'EN',
     switchLanguageLabel: 'Switch to English',

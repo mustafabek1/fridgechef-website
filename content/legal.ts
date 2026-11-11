@@ -315,3 +315,118 @@ export const terms: Record<Locale, Doc> = {
     ],
   },
 };
+
+/**
+ * Account deletion page. Google Play requires a public link where users can ask for their account
+ * and data to be deleted, naming the app and the developer shown on the store listing.
+ */
+export const deleteAccount: Record<Locale, Doc> = {
+  tr: {
+    title: 'Hesabını sil',
+    updatedLabel: 'Son güncelleme',
+    intro: `Bu sayfa, Mustafa Bek tarafından geliştirilen FridgeChef uygulaması (iOS ve Android) içindir. FridgeChef hesabını ve hesabına bağlı verileri silmemizi buradan isteyebilirsin.`,
+    sections: [
+      {
+        h: 'Silme talebi nasıl gönderilir',
+        blocks: [
+          [
+            `FridgeChef'e giriş yaptığın e-posta adresinden ${PRIVACY_EMAIL} adresine bir e-posta gönder.`,
+            'Konu satırına "Hesap silme talebi" yaz.',
+            'Google veya Apple ile giriş yaptıysan, o hesabın e-posta adresinden yaz. Apple ile girişte e-postanı gizlediysen, uygulamadaki Profil ekranında görünen e-posta adresini belirt.',
+          ],
+          'Talebin bize ulaştığında hesabın sana ait olduğunu doğrularız; gerekirse e-postayla ek bilgi isteriz. Silme işlemi en geç 30 gün içinde tamamlanır ve sana e-postayla bildirilir.',
+        ],
+      },
+      {
+        h: 'Silinen veriler',
+        blocks: [
+          [
+            'Hesap ve iletişim bilgilerin: e-posta adresi, giriş bilgileri, adın, telefon numaran ve izin tercihlerin.',
+            'Profil ve hedeflerin: boy, kilo, aktivite, kalori ve makro hedefleri.',
+            'Diyet planların, plan cevapların ve haftalık kontrollerin.',
+            'Öğün günlüğün ve fotoğraf analizi sonuçları.',
+            'Tarif geçmişin ve alışveriş listen.',
+            'Hak bakiyen ve kullanım kayıtların.',
+          ],
+          'Fotoğrafları zaten sunucularımızda saklamıyoruz. Silme tamamlandığında bu veriler geri getirilemez.',
+        ],
+      },
+      {
+        h: 'Saklanabilecek veriler',
+        blocks: [
+          [
+            'Satın alma kayıtları: abonelik ödemelerine ait kayıtlar Apple, Google ve RevenueCat tarafından, kendi kuralları ve yasal yükümlülükleri gereğince saklanır.',
+            'Silme talebine ait yazışma: talebi işlediğimizi gösterebilmek için en fazla 1 yıl saklanır.',
+            'Yasal bir yükümlülük olduğunda, yalnızca o yükümlülüğün gerektirdiği veriler ve süre boyunca.',
+          ],
+        ],
+      },
+      {
+        h: 'Aboneliğin',
+        blocks: [
+          'Hesabını silmek aboneliği iptal etmez. Ücretlendirilmeye devam etmemek için aboneliğini önce iPhone\'da App Store abonelik ayarlarından ya da Android\'de Google Play > Abonelikler bölümünden iptal et.',
+        ],
+      },
+      {
+        h: 'Hesabını silmeden yalnızca verilerini sildirmek',
+        blocks: [
+          `Hesabın açık kalsın ama belirli verilerin (ör. öğün günlüğün veya diyet planların) silinsin istiyorsan, ${PRIVACY_EMAIL} adresine hangi verilerin silinmesini istediğini yaz.`,
+        ],
+      },
+    ],
+  },
+  en: {
+    title: 'Delete your account',
+    updatedLabel: 'Last updated',
+    intro: `This page is for the FridgeChef app (iOS and Android), developed by Mustafa Bek. You can ask us here to delete your FridgeChef account and the data linked to it.`,
+    sections: [
+      {
+        h: 'How to request deletion',
+        blocks: [
+          [
+            `Send an email to ${PRIVACY_EMAIL} from the email address you use to sign in to FridgeChef.`,
+            'Use the subject line "Account deletion request".',
+            'If you signed in with Google or Apple, write from that account\'s email address. If you hid your email when signing in with Apple, include the email address shown on the Profile screen in the app.',
+          ],
+          'When we receive your request we confirm the account is yours, and may ask for more details by email. Deletion is completed within 30 days at the latest, and we let you know by email.',
+        ],
+      },
+      {
+        h: 'Data that is deleted',
+        blocks: [
+          [
+            'Your account and contact details: email address, sign-in details, name, phone number and consent choices.',
+            'Your profile and goals: height, weight, activity, calorie and macro targets.',
+            'Your diet plans, plan answers and weekly check-ins.',
+            'Your meal log and photo analysis results.',
+            'Your recipe history and shopping list.',
+            'Your token balance and usage records.',
+          ],
+          'We don\'t store your photos on our servers in the first place. Once deletion is complete, this data can\'t be recovered.',
+        ],
+      },
+      {
+        h: 'Data that may be kept',
+        blocks: [
+          [
+            'Purchase records: records of subscription payments are kept by Apple, Google and RevenueCat under their own rules and legal obligations.',
+            'Correspondence about your deletion request: kept for up to 1 year so we can show the request was handled.',
+            'Where the law requires it, only the data and for only as long as that obligation requires.',
+          ],
+        ],
+      },
+      {
+        h: 'Your subscription',
+        blocks: [
+          'Deleting your account doesn\'t cancel a subscription. To stop being charged, first cancel it in the App Store subscription settings on iPhone, or under Google Play > Subscriptions on Android.',
+        ],
+      },
+      {
+        h: 'Deleting only some of your data',
+        blocks: [
+          `If you want to keep your account but have specific data deleted (for example your meal log or diet plans), email ${PRIVACY_EMAIL} saying which data you want deleted.`,
+        ],
+      },
+    ],
+  },
+};
